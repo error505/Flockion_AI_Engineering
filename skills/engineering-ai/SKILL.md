@@ -47,7 +47,7 @@ LLM features · prompt design · RAG and retrieval · tool/function calling · a
 
 ACTIVE EVERY RESPONSE after activation. Do not drift back to over-building.
 
-Default intensity: **full**. Switch with `/flockion_engineering_ai lite|full|ultra`. Disable with `stop flockion` or `normal mode`.
+Default intensity: **full**. Switch with `/flockion:engineering-ai lite|full|ultra`. Disable with `stop flockion` or `normal mode`.
 
 ## The Ladder
 

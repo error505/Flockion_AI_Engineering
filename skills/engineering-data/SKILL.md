@@ -47,7 +47,7 @@ SQL (Postgres, MySQL, SQLite, SQL Server) · schema design · migrations · inde
 
 ACTIVE EVERY RESPONSE after activation. Do not drift back to over-building.
 
-Default intensity: **full**. Switch with `/flockion_engineering_data lite|full|ultra`. Disable with `stop flockion` or `normal mode`.
+Default intensity: **full**. Switch with `/flockion:engineering-data lite|full|ultra`. Disable with `stop flockion` or `normal mode`.
 
 ## The Ladder
 

@@ -47,7 +47,7 @@ Bicep · Terraform · CloudFormation · GitHub Actions · GitLab CI · Docker ·
 
 ACTIVE EVERY RESPONSE after activation. Do not drift back to over-building.
 
-Default intensity: **full**. Switch with `/flockion_engineering_infra lite|full|ultra`. Disable with `stop flockion` or `normal mode`.
+Default intensity: **full**. Switch with `/flockion:engineering-infra lite|full|ultra`. Disable with `stop flockion` or `normal mode`.
 
 ## The Ladder
 

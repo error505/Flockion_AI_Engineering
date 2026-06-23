@@ -63,17 +63,17 @@ Flockion works on **two layers**. The *lifecycle modes* pick the right mindset f
 
 ### 🔁 Lifecycle modes — the Skill Pack
 
-The phase-by-phase decision modes, catalogued in [`skills/flockion/flockion_skill_pack.md`](./skills/flockion/flockion_skill_pack.md). `flockion_engineering` is the base standard; the rest are sharper modes for a specific phase.
+The phase-by-phase decision modes, catalogued in [`docs/skill-pack.md`](./docs/skill-pack.md). `engineering` is the base standard; the rest are sharper modes for a specific phase. Plugin invocation is `/flockion:<name>`.
 
 | Phase | Skill | Use it to… |
 | ----- | ----- | ----------- |
-| 💡 Idea | **flockion_product_builder** | cut an idea down to the smallest shippable feature with a clear success metric |
-| 📐 Design | **flockion_architecture_review** | make a design smaller, safer, and cheaper to change — not bigger |
-| 🤖 Agents | **flockion_agent_design** | spec a trustworthy agent/team: narrow tools, contracts, guardrails, approval |
-| 🛠️ Build | **flockion_engineering** | write the shortest safe code (the base coding standard) |
-| 🔍 Review | **flockion_code_review** | catch what matters: correctness, security, data loss, bloat |
-| 🛡️ Risk | **flockion_security_review** | block unsafe shortcuts before they reach production |
-| 💸 Cost | **flockion_cost_control** | kill token/cloud cost leaks without hurting product value |
+| 💡 Idea | **product-builder** | cut an idea down to the smallest shippable feature with a clear success metric |
+| 📐 Design | **architecture-review** | make a design smaller, safer, and cheaper to change — not bigger |
+| 🤖 Agents | **agent-design** | spec a trustworthy agent/team: narrow tools, contracts, guardrails, approval |
+| 🛠️ Build | **engineering** | write the shortest safe code (the base coding standard) |
+| 🔍 Review | **code-review** | catch what matters: correctness, security, data loss, bloat |
+| 🛡️ Risk | **security-review** | block unsafe shortcuts before they reach production |
+| 💸 Cost | **cost-control** | kill token/cloud cost leaks without hurting product value |
 
 ### ⚙️ Implementation flavors — stack-specific engineering
 
@@ -81,30 +81,30 @@ Specializations of the Build phase. Each takes the base standard and sharpens th
 
 | Skill | Stack | File |
 | ----- | ----- | ---- |
-| **flockion_engineering_python** | Python · backend · APIs · serverless | [`skills/flockion/python/`](./skills/flockion/python/flockion_engineering_backend.md) |
-| **flockion_engineering_typescript_react** | TypeScript · React · frontend · forms · state | [`skills/flockion/typescript/`](./skills/flockion/typescript/flockion_engineering_react.md) |
-| **flockion_engineering_infra** | DevOps · IaC · CI/CD · containers | [`skills/flockion/infra/`](./skills/flockion/infra/flockion_engineering_infra.md) |
-| **flockion_engineering_data** | SQL · databases · migrations · pipelines | [`skills/flockion/data/`](./skills/flockion/data/flockion_engineering_data.md) |
-| **flockion_engineering_ai** | Agents · RAG · LLM · tool-calling · prompts | [`skills/flockion/ai/`](./skills/flockion/ai/flockion_engineering_ai.md) |
+| **engineering-python** | Python · backend · APIs · serverless | [`skills/engineering-python/`](./skills/engineering-python/SKILL.md) |
+| **engineering-react** | TypeScript · React · frontend · forms · state | [`skills/engineering-react/`](./skills/engineering-react/SKILL.md) |
+| **engineering-infra** | DevOps · IaC · CI/CD · containers | [`skills/engineering-infra/`](./skills/engineering-infra/SKILL.md) |
+| **engineering-data** | SQL · databases · migrations · pipelines | [`skills/engineering-data/`](./skills/engineering-data/SKILL.md) |
+| **engineering-ai** | Agents · RAG · LLM · tool-calling · prompts | [`skills/engineering-ai/`](./skills/engineering-ai/SKILL.md) |
 
 ### 🗺️ How they fit together
 
 ```text
-        ┌─ flockion_product_builder ──── what is the smallest useful feature?
+        ┌─ product-builder ──── what is the smallest useful feature?
  idea   │
-        └─ flockion_architecture_review ─ what is the simplest safe design?
+        └─ architecture-review ─ what is the simplest safe design?
                      │
-                     ├─ flockion_agent_design ─── (if it involves agents/teams)
+                     ├─ agent-design ─── (if it involves agents/teams)
                      ▼
- build   flockion_engineering ──────────── the base standard
+ build   engineering ──────────── the base standard
                      │   specialized by stack ↓
-                     ├─ flockion_engineering_python           (backend/apis)
-                     ├─ flockion_engineering_typescript_react (frontend)
-                     ├─ flockion_engineering_infra            (devops/iac/ci-cd)
-                     ├─ flockion_engineering_data             (sql/db/pipelines)
-                     └─ flockion_engineering_ai               (llm/rag/agents)
+                     ├─ engineering-python   (backend/apis)
+                     ├─ engineering-react    (frontend)
+                     ├─ engineering-infra    (devops/iac/ci-cd)
+                     ├─ engineering-data     (sql/db/pipelines)
+                     └─ engineering-ai       (llm/rag/agents)
                      ▼
- ship    flockion_code_review → flockion_security_review → flockion_cost_control
+ ship    code-review → security-review → cost-control
 ```
 
 ---
@@ -120,9 +120,9 @@ Every skill supports three intensities. Default is **full**.
 | `ultra` | YAGNI extremist. Challenge the requirement. Prefer deletion before addition. |
 
 ```text
-/flockion_engineering lite
-/flockion_engineering full
-/flockion_engineering ultra
+/flockion:engineering lite
+/flockion:engineering full
+/flockion:engineering ultra
 ```
 
 Disable with: `stop flockion` · `normal mode`
@@ -195,18 +195,19 @@ The skills are plain Markdown — you can also just drop them in:
 
 ```bash
 # Per-project (recommended for team-shared standards)
-mkdir -p .claude/skills && cp -r skills/flockion .claude/skills/
+mkdir -p .claude/skills && cp -r skills/* .claude/skills/
 
 # Global (every project) — macOS / Linux
-cp -r skills/flockion ~/.claude/skills/
+mkdir -p ~/.claude/skills && cp -r skills/* ~/.claude/skills/
 ```
 
 ```powershell
 # Global — Windows (PowerShell)
-Copy-Item -Recurse skills\flockion $env:USERPROFILE\.claude\skills\
+New-Item -ItemType Directory -Force $env:USERPROFILE\.claude\skills | Out-Null
+Copy-Item -Recurse skills\* $env:USERPROFILE\.claude\skills\
 ```
 
-Then invoke a skill by name (`/flockion_engineering`, `/flockion_code_review`, …) or just say **"flockion"**, **"be lazy"**, **"simplest solution"**, or **"YAGNI"** in any message.
+Copied as personal skills, invoke by the folder name (`/engineering`, `/code-review`, …); installed as the plugin, they are namespaced (`/flockion:engineering`). Or just say **"flockion"**, **"be lazy"**, **"simplest solution"**, or **"YAGNI"** in any message.
 
 ### Other agents — always-on ruleset
 
@@ -221,24 +222,24 @@ For agents that read a project rules / instructions file, Flockion ships a compa
 | GitHub Copilot | [`.github/copilot-instructions.md`](./.github/copilot-instructions.md) |
 | Kiro | [`.kiro/steering/flockion.md`](./.kiro/steering/flockion.md) |
 
-Run Flockion from a checkout of this repo and these are picked up automatically; to use one elsewhere, copy it into the matching path in your project. All six are generated from [`rules/flockion.md`](./rules/flockion.md) — edit that one file and run `npm run build:adapters`. This always-on path carries the ruleset; the named `/flockion_*` skills above need a skill-capable host (Claude Code).
+Run Flockion from a checkout of this repo and these are picked up automatically; to use one elsewhere, copy it into the matching path in your project. All six are generated from [`rules/flockion.md`](./rules/flockion.md) — edit that one file and run `npm run build:adapters`. This always-on path carries the ruleset; the named `/flockion:*` skills above need a skill-capable host (Claude Code).
 
 ---
 
 ## 🧰 Commands & skills
 
-In a skill-capable host (Claude Code, and any agent that loads these skill files), invoke a skill by name. The engineering skills take an optional intensity argument; the mode skills run at their default.
+In a skill-capable host (Claude Code), invoke a skill by name. Names below use the plugin form `/flockion:<name>`; a personal-skills copy drops the prefix (`/engineering`). The engineering skills take an optional intensity argument; the mode skills run at their default.
 
 | Invoke | What it does |
 | ------ | ------------ |
-| `/flockion_engineering [lite\|full\|ultra]` | The base standard. Set the intensity, or run at the default (`full`). |
-| `/flockion_engineering_python` · `_typescript_react` · `_infra` · `_data` · `_ai` | Stack-specialized engineering — same ladder, sharpened rules. |
-| `/flockion_product_builder` | Cut an idea down to the smallest shippable feature with a clear success metric. |
-| `/flockion_architecture_review` | Make a design smaller, safer, and cheaper to change. |
-| `/flockion_agent_design` | Spec a trustworthy agent/team: narrow tools, contracts, guardrails, approval. |
-| `/flockion_code_review` | Review the current diff for over-engineering — hands back a delete-list. |
-| `/flockion_security_review` | Confirm the smaller diff never dropped a security or validation control. |
-| `/flockion_cost_control` | Find token/cloud cost leaks without hurting product value. |
+| `/flockion:engineering [lite\|full\|ultra]` | The base standard. Set the intensity, or run at the default (`full`). |
+| `/flockion:engineering-python` · `-react` · `-infra` · `-data` · `-ai` | Stack-specialized engineering — same ladder, sharpened rules. |
+| `/flockion:product-builder` | Cut an idea down to the smallest shippable feature with a clear success metric. |
+| `/flockion:architecture-review` | Make a design smaller, safer, and cheaper to change. |
+| `/flockion:agent-design` | Spec a trustworthy agent/team: narrow tools, contracts, guardrails, approval. |
+| `/flockion:code-review` | Review the current diff for over-engineering — hands back a delete-list. |
+| `/flockion:security-review` | Confirm the smaller diff never dropped a security or validation control. |
+| `/flockion:cost-control` | Find token/cloud cost leaks without hurting product value. |
 
 Intensity is per skill: **`lite`** names the simpler alternative, **`full`** (default) applies the ladder strictly, **`ultra`** is the YAGNI extremist for when the codebase has wronged you personally. Disable with `stop flockion` or `normal mode`.
 
@@ -282,9 +283,9 @@ npm run check            # fail if any adapter drifted from rules/flockion.md  (
 A few conventions keep the set coherent:
 
 - **One source for the ruleset.** [`rules/flockion.md`](./rules/flockion.md) is canonical; the six harness adapters are generated from it. Edit the source, never the generated files — `npm run check` enforces it.
-- **Frontmatter convention.** Every skill file starts with valid YAML frontmatter: `name`, `description` (block scalar), `argument-hint`, `applyTo`, `license`. Names follow `flockion_engineering` (base), `flockion_engineering_<stack>` (flavors), and `flockion_<mode>` (modes).
-- **Keep the catalog in sync.** [`skills/flockion/flockion_skill_pack.md`](./skills/flockion/flockion_skill_pack.md) is the routing index — it points at the real skill files, it does not define skills. When you add or rename a skill, update the catalog and this README's tables.
-- **One skill, one file.** Each skill lives in its own folder under `skills/flockion/`. Don't merge skills back into a single doc.
+- **Skill layout.** Each skill is `skills/<name>/SKILL.md` (exactly one level deep — Claude Code does not recurse). The folder name is the invocation (`/flockion:<name>` as a plugin, `/<name>` as a personal skill). Frontmatter uses valid YAML: `name`, `description` (block scalar), `argument-hint`; `applyTo`/`license` are kept for the other adapters but ignored by Claude Code.
+- **Keep the catalog in sync.** [`docs/skill-pack.md`](./docs/skill-pack.md) is the routing index — it points at the real skill files, it does not define skills. When you add or rename a skill, update the catalog and this README's tables.
+- **One skill, one folder.** Each skill lives in its own folder under `skills/`. Don't merge skills back into a single doc.
 - **Benchmarks are honest or absent.** See [`benchmarks/`](./benchmarks). Ship numbers only from real runs written up in `benchmarks/results/`; the example records are synthetic and labelled as such.
 - **The file-size rule applies to skills too.** A skill that sprawls into a mega-standard is over-built — split it by responsibility, the same way the rules say to split code.
 

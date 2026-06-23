@@ -75,9 +75,9 @@ Default intensity: **full**.
 Switch intensity with:
 
 ```text
-/flockion lite
-/flockion full
-/flockion ultra
+/flockion:engineering-python lite
+/flockion:engineering-python full
+/flockion:engineering-python ultra
 ```
 
 Disable only with:

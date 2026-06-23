@@ -87,24 +87,15 @@ Default intensity: **full**.
 Switch intensity with:
 
 ```text
-/flockion_engineering lite
-/flockion_engineering full
-/flockion_engineering ultra
-```
-
-Compatible aliases:
-
-```text
-/ponytail lite
-/ponytail full
-/ponytail ultra
+/flockion:engineering-react lite
+/flockion:engineering-react full
+/flockion:engineering-react ultra
 ```
 
 Disable only with:
 
 ```text
-stop flockion_engineering
-stop ponytail
+stop flockion
 normal mode
 ```
 
