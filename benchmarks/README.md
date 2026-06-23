@@ -1,9 +1,17 @@
 # Flockion benchmarks
 
-> **Status: harness only — no numbers collected yet.** This directory is the
-> scaffold for measuring Flockion honestly. It ships the task set, the scoring
-> script, and the run-record format. It does **not** ship results, and the
-> README will not claim any until a real run fills `results/`.
+> **Status.** Two tracks, deliberately kept separate:
+>
+> 1. **Reference code-size (collected, real).** Paired minimal-vs-hand-rolled
+>    implementations of the over-build traps, measured with `npm run bench:loc`.
+>    Result: [`results/2026-06-23-loc-reference.md`](./results/2026-06-23-loc-reference.md)
+>    (325 → 43 SLOC, −87%). Reproducible from [`reference/`](./reference).
+> 2. **Agentic A/B (scaffold only, not collected).** Does the *skill* change what
+>    an agent builds? Task set, scorer, and run-record format are here; no runs
+>    yet. The README will not claim agentic numbers until `results/` has them.
+>
+> Track 1 measures the *consequence* of the simpler rung (code size). Track 2 is
+> the real behavioral question, and is the harder, still-pending study.
 
 ## What an honest measurement looks like
 
@@ -36,6 +44,10 @@ latency) should fall out as a *side effect*.
 ## Running it
 
 ```bash
+# Track 1 — reference code-size (real, reproducible from benchmarks/reference/):
+npm run bench:loc            # or: node benchmarks/measure-loc.mjs
+
+# Track 2 — agentic A/B:
 # 1. Collect run records into benchmarks/runs/ (one JSON file per arm).
 #    See benchmarks/examples/ for the exact shape.
 # 2. Score them against the no-skill baseline:

@@ -7,7 +7,10 @@
   "type": "module",
   "scripts": {
     "build:adapters": "node scripts/build-adapters.mjs",
-    "check": "node scripts/build-adapters.mjs --check",
+    "check:adapters": "node scripts/build-adapters.mjs --check",
+    "check:skills": "node scripts/check-skills.mjs",
+    "check": "npm run check:adapters && npm run check:skills",
+    "bench:loc": "node benchmarks/measure-loc.mjs",
     "test": "npm run check"
   }
 }

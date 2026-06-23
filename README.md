@@ -163,16 +163,16 @@ A custom TTL cache is a bug farm until proven necessary.
 
 The rule was never "fewest tokens." It is: **write only what the task needs, and never cut validation, error handling, security, or accessibility.** The code ends up small because it is necessary, not golfed. Lower diff size — and, on models that follow the ladder cleanly, lower cost and latency — are a *side effect* of stopping at the first rung that holds, not the goal.
 
-The win is largest where there is a real over-build trap and near zero on code that is already minimal:
+The win is largest where there is a real over-build trap and near zero on code that is already minimal. These are **measured** code sizes of the minimal answer vs a representative hand-rolled one — run `npm run bench:loc` to reproduce them from [`benchmarks/reference/`](./benchmarks/reference):
 
-| Task | Naïve over-build | Flockion | Why |
-| ---- | ---------------- | -------- | --- |
-| Date input | a date-picker component + state + formatting | native `<input type="date">` | the platform already does it (rung 4) |
-| Color input | a custom color-picker widget | native `<input type="color">` | same — reach for HTML before a component |
-| Response cache | a `CacheManager` class + TTL + eviction | `functools.lru_cache` | the stdlib already does it (rung 3) |
-| "Selected tab" state | a global store | URL param or local `useState` | local state before global (the cheapest owner) |
+| Trap | Naïve over-build | naive SLOC | Flockion | min SLOC |
+| ---- | ---------------- | ---------- | -------- | -------- |
+| Date input | a date-picker popover component | 135 | native `<input type="date">` | 21 |
+| Color input | a hand-rolled HSV picker | 134 | native `<input type="color">` | 17 |
+| Response cache | a `CacheManager` + TTL + eviction | 56 | `functools.lru_cache` | 5 |
+| **Total** | | **325** | | **43** (**−87%**) |
 
-> **Honesty note.** Flockion ships as a *design standard*, not a measured benchmark — there are **no published numbers yet**, and this README will not invent any. The honest test is a real agent doing real work on a real repo, the same tickets **with and without** the skill, scored on the **git diff it leaves behind** (LOC, tokens, cost, time) plus a separate **adversarial safety tier** to confirm the smaller diff never drops a security or validation control. That harness is scaffolded in [`benchmarks/`](./benchmarks) — task set, scoring script, and run-record format — ready to be filled with real runs. Numbers live there, not in claims here.
+> **Honesty note — what these numbers are and aren't.** The table above is real and reproducible, but it measures **code size**: a Flockion-minimal solution vs a representative hand-rolled one for each trap ([full method + limitations](./benchmarks/results/2026-06-23-loc-reference.md)). It is *not* proof the skill changes an agent's behavior. That claim needs the **agentic A/B study** — a real agent doing real work on a real repo, the same tickets **with and without** the skill, scored on the git diff it leaves behind (LOC, tokens, cost, time) plus a separate **adversarial safety tier**. That harness is scaffolded in [`benchmarks/`](./benchmarks) and is **not yet collected** — this README will not invent those numbers.
 
 ---
 
