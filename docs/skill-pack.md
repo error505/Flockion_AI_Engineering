@@ -44,6 +44,14 @@ The base standard, sharpened per stack. Use these during the Build phase.
 | `engineering-data` | SQL · databases · pipelines | [skills/engineering-data/](../skills/engineering-data/SKILL.md) |
 | `engineering-ai` | LLM · RAG · tool-calling | [skills/engineering-ai/](../skills/engineering-ai/SKILL.md) |
 
+## Specialized modes
+
+Sharper modes for specific, high-risk jobs — beyond the core pack.
+
+| Skill | Use it for | File |
+| ----- | ---------- | ---- |
+| `decomposition` | breaking a monolith into services the lazy, safe way (strangler fig, branch by abstraction, parallel run, expand–migrate–contract); defaults to "extract a module, not a service" | [skills/decomposition/](../skills/decomposition/SKILL.md) |
+
 ## Final Pack Rule
 
 Each skill must stay narrow.

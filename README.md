@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
-  <a href="#-the-skills"><img src="https://img.shields.io/badge/skills-12-blue.svg" alt="Skills" /></a>
+  <a href="#-the-skills"><img src="https://img.shields.io/badge/skills-13-blue.svg" alt="Skills" /></a>
   <a href="#%EF%B8%8F-intensity-levels"><img src="https://img.shields.io/badge/intensity-lite%20%7C%20full%20%7C%20ultra-orange.svg" alt="Intensity" /></a>
 </p>
 
@@ -86,6 +86,14 @@ Specializations of the Build phase. Each takes the base standard and sharpens th
 | **engineering-infra** | DevOps · IaC · CI/CD · containers | [`skills/engineering-infra/`](./skills/engineering-infra/SKILL.md) |
 | **engineering-data** | SQL · databases · migrations · pipelines | [`skills/engineering-data/`](./skills/engineering-data/SKILL.md) |
 | **engineering-ai** | Agents · RAG · LLM · tool-calling · prompts | [`skills/engineering-ai/`](./skills/engineering-ai/SKILL.md) |
+
+### 🧭 Specialized modes
+
+Sharper modes for specific, high-risk jobs — beyond the core pack pictured above.
+
+| Skill | Use it to… |
+| ----- | ---------- |
+| **decomposition** | break a monolith into services *the lazy, safe way* — only under real pressure, one reversible seam at a time, via strangler fig / branch by abstraction / parallel run / expand–migrate–contract. Defaults to "extract a module, not a service." |
 
 ### 🗺️ How they fit together
 
@@ -240,6 +248,7 @@ In a skill-capable host (Claude Code), invoke a skill by name. Names below use t
 | `/flockion:code-review` | Review the current diff for over-engineering — hands back a delete-list. |
 | `/flockion:security-review` | Confirm the smaller diff never dropped a security or validation control. |
 | `/flockion:cost-control` | Find token/cloud cost leaks without hurting product value. |
+| `/flockion:decomposition` | Break a monolith into services safely — smallest reversible seam, strangler fig / branch by abstraction, expand–migrate–contract. |
 
 Intensity is per skill: **`lite`** names the simpler alternative, **`full`** (default) applies the ladder strictly, **`ultra`** is the YAGNI extremist for when the codebase has wronged you personally. Disable with `stop flockion` or `normal mode`.
 
