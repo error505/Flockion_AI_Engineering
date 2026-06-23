@@ -2,7 +2,7 @@
   <img src="./logo.png" alt="Flockion logo" width="160" />
 </p>
 
-<h1 align="center">Flockion</h1>
+<h1 align="center">Flockion AI Engineering</h1>
 
 <p align="center"><strong><em>Lazy means efficient, not careless.</em></strong></p>
 
@@ -47,7 +47,9 @@ Every Flockion skill runs the same reflex before writing code. **Stop at the fir
 7. Only then write new code.            → the minimum that solves the real need
 ```
 
-Read first. Trace the caller, callee, side effects, and boundary. *Then* choose the smallest safe change.
+The ladder runs *after* it understands the problem, not instead of it: it reads the code the change touches and traces the real flow before picking a rung. Lazy about the solution, never about reading.
+
+**Lazy, not negligent.** Trust-boundary validation, data-loss handling, security, and accessibility are never on the chopping block. The code ends up small because it is *necessary*, not golfed.
 
 ---
 
@@ -157,6 +159,23 @@ A custom TTL cache is a bug farm until proven necessary.
 
 ---
 
+## 📊 What it optimizes for
+
+The rule was never "fewest tokens." It is: **write only what the task needs, and never cut validation, error handling, security, or accessibility.** The code ends up small because it is necessary, not golfed. Lower diff size — and, on models that follow the ladder cleanly, lower cost and latency — are a *side effect* of stopping at the first rung that holds, not the goal.
+
+The win is largest where there is a real over-build trap and near zero on code that is already minimal:
+
+| Task | Naïve over-build | Flockion | Why |
+| ---- | ---------------- | -------- | --- |
+| Date input | a date-picker component + state + formatting | native `<input type="date">` | the platform already does it (rung 4) |
+| Color input | a custom color-picker widget | native `<input type="color">` | same — reach for HTML before a component |
+| Response cache | a `CacheManager` class + TTL + eviction | `functools.lru_cache` | the stdlib already does it (rung 3) |
+| "Selected tab" state | a global store | URL param or local `useState` | local state before global (the cheapest owner) |
+
+> **Honesty note.** Flockion ships as a *design standard*, not a measured benchmark — there are no published numbers yet, and this README will not invent any. If you want to measure it, the honest test is the same shape ponytail-style benchmarks use: a real agent doing real work on a real repo, the same tickets **with and without** the skill, scored on the **git diff it leaves behind** (LOC, tokens, cost, time) plus a separate **adversarial safety tier** to confirm the smaller diff never drops a security or validation control. Results, if collected, belong in `benchmarks/` — not in claims here.
+
+---
+
 ## 📦 Install
 
 Flockion skills are plain Markdown skill files. Drop them where Claude Code looks for skills.
@@ -184,6 +203,25 @@ Then invoke a skill by name (`/flockion_engineering`, `/flockion_code_review`, �
 
 ---
 
+## 🧰 Commands & skills
+
+In a skill-capable host (Claude Code, and any agent that loads these skill files), invoke a skill by name. The engineering skills take an optional intensity argument; the mode skills run at their default.
+
+| Invoke | What it does |
+| ------ | ------------ |
+| `/flockion_engineering [lite\|full\|ultra]` | The base standard. Set the intensity, or run at the default (`full`). |
+| `/flockion_engineering_python` · `_typescript_react` · `_infra` · `_data` · `_ai` | Stack-specialized engineering — same ladder, sharpened rules. |
+| `/flockion_product_builder` | Cut an idea down to the smallest shippable feature with a clear success metric. |
+| `/flockion_architecture_review` | Make a design smaller, safer, and cheaper to change. |
+| `/flockion_agent_design` | Spec a trustworthy agent/team: narrow tools, contracts, guardrails, approval. |
+| `/flockion_code_review` | Review the current diff for over-engineering — hands back a delete-list. |
+| `/flockion_security_review` | Confirm the smaller diff never dropped a security or validation control. |
+| `/flockion_cost_control` | Find token/cloud cost leaks without hurting product value. |
+
+Intensity is per skill: **`lite`** names the simpler alternative, **`full`** (default) applies the ladder strictly, **`ultra`** is the YAGNI extremist for when the codebase has wronged you personally. Disable with `stop flockion` or `normal mode`.
+
+---
+
 ## 🗣️ Trigger phrases
 
 Flockion activates when you say any of:
@@ -196,7 +234,7 @@ Flockion activates when you say any of:
 
 ## 🧱 Shared principles
 
-Pulled directly from the skills, applied across all five:
+Pulled directly from the skills, applied across the whole family:
 
 - **Single Responsibility** — if the name needs "and", it does too much.
 - **Simplicity before patterns** — no architecture cosplay.
@@ -207,6 +245,17 @@ Pulled directly from the skills, applied across all five:
 - **DRY, but late** — write it, notice it, *then* extract it. Wrong abstraction is worse than temporary duplication.
 - **File Size Rule** — `100–300` good · `300–500` review · `500+` refactor · `800–1000` design warning.
 - **Leave one small check** — non-trivial logic ships with its smallest useful test.
+
+---
+
+## 🛠️ Development
+
+The skills are plain Markdown — no build step. A few things keep the set coherent:
+
+- **Frontmatter convention.** Every skill file starts with valid YAML frontmatter: `name`, `description` (block scalar), `argument-hint`, `applyTo`, `license`. Names follow `flockion_engineering` (base), `flockion_engineering_<stack>` (flavors), and `flockion_<mode>` (modes).
+- **Keep the catalog in sync.** [`skills/flockion/flockion_skill_pack.md`](./skills/flockion/flockion_skill_pack.md) is the routing index — it points at the real skill files, it does not define skills. When you add or rename a skill, update the catalog and this README's tables.
+- **One skill, one file.** Each skill lives in its own folder under `skills/flockion/`. Don't merge skills back into a single doc.
+- **The file-size rule applies to skills too.** A skill that sprawls into a mega-standard is over-built — split it by responsibility, the same way the rules say to split code.
 
 ---
 
