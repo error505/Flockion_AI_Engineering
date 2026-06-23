@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/build-adapters.mjs)",
+      "Bash(node scripts/build-adapters.mjs --check)",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('.claude-plugin/plugin.json','utf8'\\)\\); JSON.parse\\(require\\('fs'\\).readFileSync\\('.claude-plugin/marketplace.json','utf8'\\)\\); console.log\\('manifests: valid JSON'\\)\")",
+      "Bash(node benchmarks/score.mjs)",
+      "Bash(node benchmarks/score.mjs --dir benchmarks/examples)",
+      "Bash(npm test *)"
+    ]
+  }
+}

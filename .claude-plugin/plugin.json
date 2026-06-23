@@ -1,0 +1,17 @@
+{
+  "name": "flockion",
+  "version": "0.1.0",
+  "description": "Lazy senior engineer skills: write the least code that safely solves the real problem. Ships the engineering ladder plus product, architecture, agent, review, security, and cost skills.",
+  "author": {
+    "name": "Igor Iric"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "clean-code",
+    "yagni",
+    "simplicity",
+    "code-review",
+    "refactoring"
+  ]
+}

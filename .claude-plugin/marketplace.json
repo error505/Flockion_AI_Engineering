@@ -1,0 +1,14 @@
+{
+  "name": "flockion",
+  "owner": {
+    "name": "Igor Iric"
+  },
+  "plugins": [
+    {
+      "name": "flockion",
+      "source": "./",
+      "description": "Lazy senior engineer skills — the engineering ladder plus product, architecture, agent, code-review, security, and cost skills.",
+      "version": "0.1.0"
+    }
+  ]
+}

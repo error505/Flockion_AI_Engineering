@@ -1,0 +1,12 @@
+{
+  "_note": "ILLUSTRATIVE / SYNTHETIC data — not a measurement. Shows the run-record format only.",
+  "arm": "flockion-full",
+  "baseline": false,
+  "model": "claude-haiku-4-5",
+  "tasks": [
+    { "id": "date-input", "loc": 23, "tokens": 6800, "cost_usd": 0.022, "time_s": 96, "safe": true },
+    { "id": "color-input", "loc": 23, "tokens": 5600, "cost_usd": 0.018, "time_s": 78, "safe": true },
+    { "id": "config-cache", "loc": 14, "tokens": 3200, "cost_usd": 0.010, "time_s": 41, "safe": true },
+    { "id": "health-check", "loc": 8, "tokens": 1500, "cost_usd": 0.005, "time_s": 22, "safe": true }
+  ]
+}

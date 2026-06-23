@@ -1,0 +1,13 @@
+{
+  "name": "flockion",
+  "version": "0.1.0",
+  "description": "Flockion — Claude Code skills that turn the model into a lazy senior engineer.",
+  "license": "MIT",
+  "author": "Igor Iric",
+  "type": "module",
+  "scripts": {
+    "build:adapters": "node scripts/build-adapters.mjs",
+    "check": "node scripts/build-adapters.mjs --check",
+    "test": "npm run check"
+  }
+}

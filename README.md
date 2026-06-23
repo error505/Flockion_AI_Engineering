@@ -172,34 +172,56 @@ The win is largest where there is a real over-build trap and near zero on code t
 | Response cache | a `CacheManager` class + TTL + eviction | `functools.lru_cache` | the stdlib already does it (rung 3) |
 | "Selected tab" state | a global store | URL param or local `useState` | local state before global (the cheapest owner) |
 
-> **Honesty note.** Flockion ships as a *design standard*, not a measured benchmark — there are no published numbers yet, and this README will not invent any. If you want to measure it, the honest test is the same shape ponytail-style benchmarks use: a real agent doing real work on a real repo, the same tickets **with and without** the skill, scored on the **git diff it leaves behind** (LOC, tokens, cost, time) plus a separate **adversarial safety tier** to confirm the smaller diff never drops a security or validation control. Results, if collected, belong in `benchmarks/` — not in claims here.
+> **Honesty note.** Flockion ships as a *design standard*, not a measured benchmark — there are **no published numbers yet**, and this README will not invent any. The honest test is a real agent doing real work on a real repo, the same tickets **with and without** the skill, scored on the **git diff it leaves behind** (LOC, tokens, cost, time) plus a separate **adversarial safety tier** to confirm the smaller diff never drops a security or validation control. That harness is scaffolded in [`benchmarks/`](./benchmarks) — task set, scoring script, and run-record format — ready to be filled with real runs. Numbers live there, not in claims here.
 
 ---
 
 ## 📦 Install
 
-Flockion skills are plain Markdown skill files. Drop them where Claude Code looks for skills.
+### Claude Code — plugin
 
-**Per-project** (recommended for team-shared standards):
+The repo ships a Claude Code plugin manifest ([`.claude-plugin/`](./.claude-plugin/)), so you can install all the skills from the marketplace:
 
-```bash
-mkdir -p .claude/skills
-cp -r skills/flockion .claude/skills/
+```text
+/plugin marketplace add <your-org>/flockion
+/plugin install flockion@flockion
 ```
 
-**Global**, macOS / Linux (available in every project):
+(Replace `<your-org>/flockion` with the repo you host this in.)
+
+### Claude Code — copy the skill files
+
+The skills are plain Markdown — you can also just drop them in:
 
 ```bash
+# Per-project (recommended for team-shared standards)
+mkdir -p .claude/skills && cp -r skills/flockion .claude/skills/
+
+# Global (every project) — macOS / Linux
 cp -r skills/flockion ~/.claude/skills/
 ```
 
-**Global**, Windows (PowerShell):
-
 ```powershell
+# Global — Windows (PowerShell)
 Copy-Item -Recurse skills\flockion $env:USERPROFILE\.claude\skills\
 ```
 
 Then invoke a skill by name (`/flockion_engineering`, `/flockion_code_review`, …) or just say **"flockion"**, **"be lazy"**, **"simplest solution"**, or **"YAGNI"** in any message.
+
+### Other agents — always-on ruleset
+
+For agents that read a project rules / instructions file, Flockion ships a compact always-on ruleset, generated from one source into each harness's format. Use the file your agent reads:
+
+| Agent | File |
+| ----- | ---- |
+| Codex · OpenCode · Gemini · Zed · Aider (and most "AGENTS.md" readers) | [`AGENTS.md`](./AGENTS.md) |
+| Cursor | [`.cursor/rules/flockion.mdc`](./.cursor/rules/flockion.mdc) |
+| Windsurf | [`.windsurf/rules/flockion.md`](./.windsurf/rules/flockion.md) |
+| Cline | [`.clinerules/flockion.md`](./.clinerules/flockion.md) |
+| GitHub Copilot | [`.github/copilot-instructions.md`](./.github/copilot-instructions.md) |
+| Kiro | [`.kiro/steering/flockion.md`](./.kiro/steering/flockion.md) |
+
+Run Flockion from a checkout of this repo and these are picked up automatically; to use one elsewhere, copy it into the matching path in your project. All six are generated from [`rules/flockion.md`](./rules/flockion.md) — edit that one file and run `npm run build:adapters`. This always-on path carries the ruleset; the named `/flockion_*` skills above need a skill-capable host (Claude Code).
 
 ---
 
@@ -250,11 +272,20 @@ Pulled directly from the skills, applied across the whole family:
 
 ## 🛠️ Development
 
-The skills are plain Markdown — no build step. A few things keep the set coherent:
+The skills are plain Markdown. The one build step keeps the harness adapters in sync:
 
+```bash
+npm run build:adapters   # regenerate AGENTS.md, .cursor, .windsurf, .clinerules, .github, .kiro
+npm run check            # fail if any adapter drifted from rules/flockion.md  (also: npm test)
+```
+
+A few conventions keep the set coherent:
+
+- **One source for the ruleset.** [`rules/flockion.md`](./rules/flockion.md) is canonical; the six harness adapters are generated from it. Edit the source, never the generated files — `npm run check` enforces it.
 - **Frontmatter convention.** Every skill file starts with valid YAML frontmatter: `name`, `description` (block scalar), `argument-hint`, `applyTo`, `license`. Names follow `flockion_engineering` (base), `flockion_engineering_<stack>` (flavors), and `flockion_<mode>` (modes).
 - **Keep the catalog in sync.** [`skills/flockion/flockion_skill_pack.md`](./skills/flockion/flockion_skill_pack.md) is the routing index — it points at the real skill files, it does not define skills. When you add or rename a skill, update the catalog and this README's tables.
 - **One skill, one file.** Each skill lives in its own folder under `skills/flockion/`. Don't merge skills back into a single doc.
+- **Benchmarks are honest or absent.** See [`benchmarks/`](./benchmarks). Ship numbers only from real runs written up in `benchmarks/results/`; the example records are synthetic and labelled as such.
 - **The file-size rule applies to skills too.** A skill that sprawls into a mega-standard is over-built — split it by responsibility, the same way the rules say to split code.
 
 ---

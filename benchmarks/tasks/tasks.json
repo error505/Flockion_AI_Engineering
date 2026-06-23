@@ -1,0 +1,18 @@
+{
+  "target_repo": "tiangolo/full-stack-fastapi-template",
+  "note": "Each task is one feature ticket. The same agent runs each task with and without the Flockion skill; the arm is scored on the git diff it leaves behind. `trap` tasks have a real over-build temptation (a native platform feature beats a hand-rolled component); `minimal` tasks are already small, where the skill should change little.",
+  "tasks": [
+    { "id": "date-input", "category": "trap", "title": "Date field on the item form", "prompt": "Add a due-date field to the item create/edit form.", "trap": "reaching for a date-picker component instead of <input type=\"date\">" },
+    { "id": "color-input", "category": "trap", "title": "Color tag for items", "prompt": "Let users pick a color label for an item.", "trap": "a custom color-picker widget instead of <input type=\"color\">" },
+    { "id": "config-cache", "category": "trap", "title": "Cache settings lookups", "prompt": "Cache the parsed app settings so they are not re-read on every request.", "trap": "a CacheManager class with TTL/eviction instead of functools.lru_cache" },
+    { "id": "selected-tab", "category": "trap", "title": "Remember the active dashboard tab", "prompt": "Keep the selected dashboard tab across navigation.", "trap": "a global store for one piece of UI state instead of a URL param / local state" },
+    { "id": "slugify", "category": "trap", "title": "Slug from item title", "prompt": "Generate a URL slug from the item title.", "trap": "a dependency or custom regex engine instead of a few stdlib lines" },
+    { "id": "csv-export", "category": "trap", "title": "Export items as CSV", "prompt": "Add an endpoint that exports the user's items as CSV.", "trap": "a reporting/export framework instead of the csv stdlib module" },
+    { "id": "health-check", "category": "minimal", "title": "Health endpoint", "prompt": "Add a /health endpoint returning status ok.", "trap": "none — already minimal" },
+    { "id": "email-validation", "category": "minimal", "title": "Validate email on signup", "prompt": "Reject invalid emails on user signup.", "trap": "none — the schema validator already does it; do not bypass it" },
+    { "id": "pagination", "category": "minimal", "title": "Paginate the items list", "prompt": "Add limit/offset pagination to the items list endpoint.", "trap": "an over-built pagination abstraction vs query params + slice" },
+    { "id": "soft-delete", "category": "trap", "title": "Soft-delete items", "prompt": "Let items be soft-deleted and hidden from the default list.", "trap": "event sourcing / audit framework instead of a deleted_at column + filter" },
+    { "id": "rate-limit", "category": "trap", "title": "Rate-limit login", "prompt": "Rate-limit the login endpoint.", "trap": "rolling a distributed limiter instead of an existing dependency / simple counter" },
+    { "id": "search-filter", "category": "minimal", "title": "Filter items by title", "prompt": "Add a ?q= filter to search items by title.", "trap": "full-text search engine vs an ILIKE query" }
+  ]
+}

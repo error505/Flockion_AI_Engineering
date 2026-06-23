@@ -1,0 +1,12 @@
+{
+  "_note": "ILLUSTRATIVE / SYNTHETIC data — not a measurement. Shows the run-record format only.",
+  "arm": "no-skill",
+  "baseline": true,
+  "model": "claude-haiku-4-5",
+  "tasks": [
+    { "id": "date-input", "loc": 404, "tokens": 9800, "cost_usd": 0.031, "time_s": 142, "safe": true },
+    { "id": "color-input", "loc": 287, "tokens": 7200, "cost_usd": 0.024, "time_s": 110, "safe": true },
+    { "id": "config-cache", "loc": 96, "tokens": 4100, "cost_usd": 0.013, "time_s": 58, "safe": true },
+    { "id": "health-check", "loc": 8, "tokens": 1500, "cost_usd": 0.005, "time_s": 22, "safe": true }
+  ]
+}
