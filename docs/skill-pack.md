@@ -51,6 +51,7 @@ Sharper modes for specific, high-risk jobs — beyond the core pack.
 | Skill | Use it for | File |
 | ----- | ---------- | ---- |
 | `decomposition` | breaking a monolith into services the lazy, safe way (strangler fig, branch by abstraction, parallel run, expand–migrate–contract); defaults to "extract a module, not a service" | [skills/decomposition/](../skills/decomposition/SKILL.md) |
+| `cloud-patterns` | choosing the smallest cloud design pattern for a named problem — full 43-pattern Well-Architected catalog mapped to the five pillars, plus the over-reach traps | [skills/cloud-patterns/](../skills/cloud-patterns/SKILL.md) |
 
 ## Final Pack Rule
 
