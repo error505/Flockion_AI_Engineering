@@ -192,11 +192,10 @@ The win is largest where there is a real over-build trap and near zero on code t
 The repo ships a Claude Code plugin manifest ([`.claude-plugin/`](./.claude-plugin/)), so you can install all the skills from the marketplace:
 
 ```text
-/plugin marketplace add <your-org>/flockion
-/plugin install flockion@flockion
+/plugin marketplace add error505/Flockion_AI_Engineering
+/plugin install flockion@Flockion_AI_Engineering
 ```
 
-(Replace `<your-org>/flockion` with the repo you host this in.)
 
 ### Claude Code — copy the skill files
 
