@@ -114,7 +114,7 @@ Do not clean up bad rows repeatedly when a constraint prevents them entirely.
 
 Keep migration and query files small and cohesive.
 
-* **100–300 lines**: good · **300–500**: review · **500+**: split
+* **100–300 lines**: good · **300–500**: review · **500+**: split — never write a file bigger than 500 lines while developing · **1000+**: stop and refactor any existing file you find this large
 
 One migration = one change. Split a giant `queries.sql` by domain. No 1000-line stored-procedure dumping ground.
 

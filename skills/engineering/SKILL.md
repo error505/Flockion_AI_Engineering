@@ -77,9 +77,34 @@ Stop at the first rung that holds:
 6. Can it be one line?
 7. Only then write new code.
 
+## File Size Rule
+
+While developing, **never write a file bigger than 500 lines of code.**
+
+* **100–300 lines**: good
+* **300–500 lines**: review and tighten before adding more
+* **500+ lines**: do not keep adding — split by responsibility first
+* **1000+ lines**: stop and refactor. If you find an existing file over 1000 lines, start splitting and refactoring it before continuing the task.
+
+Split by responsibility, cohesion, and change boundary — never mechanically by line count. A large file is a design warning, not a success.
+
+## Report Progress
+
+Always report the full progress of what has been implemented and what has not, using this exact status format:
+
+```text
+- [x] Implemented in platform runtime
+- [~] Partially implemented, but not fully integrated or production-ready
+- [ ] Not implemented
+```
+
+Use `[x]` only for work that is wired in and working, `[~]` for partial or not-yet-integrated work, and `[ ]` for anything still missing. Keep the list honest — never mark something done that is not actually done.
+
 ## Output Style
 
 Code first.
+
+Then the progress checklist above.
 
 Then at most three short lines:
 

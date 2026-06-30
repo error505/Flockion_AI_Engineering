@@ -112,7 +112,7 @@ Pick the smallest capable model for the job. Don't call the model in a loop when
 
 Keep prompt and pipeline files small and cohesive.
 
-* **100–300 lines**: good · **300–500**: review · **500+**: split
+* **100–300 lines**: good · **300–500**: review · **500+**: split — never write a file bigger than 500 lines while developing · **1000+**: stop and refactor any existing file you find this large
 
 Keep prompts versioned and separate from orchestration. Split tools, retrieval, and evaluation into their own modules. No 1000-line "agent" file holding prompts, tools, parsing, and business rules at once.
 

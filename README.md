@@ -95,6 +95,7 @@ Sharper modes for specific, high-risk jobs — beyond the core pack pictured abo
 | ----- | ---------- |
 | **decomposition** | break a monolith into services *the lazy, safe way* — only under real pressure, one reversible seam at a time, via strangler fig / branch by abstraction / parallel run / expand–migrate–contract. Defaults to "extract a module, not a service." |
 | **cloud-patterns** | pick the *smallest* cloud design pattern that solves a named problem — the full 43-pattern Well-Architected catalog (Circuit Breaker, Retry, Bulkhead, CQRS, Saga, Sidecar, Gateway\*, Quarantine, Valet Key, …) mapped to the five pillars, with the over-reach traps called out. |
+| **iso-27001** | map a feature, change, or system to ISO/IEC 27001:2022 Annex A controls — the smallest set of controls that actually holds, plus the evidence an auditor would ask for. Risk-based, not checklist bureaucracy. |
 
 ### 🗺️ How they fit together
 
@@ -250,6 +251,7 @@ In a skill-capable host (Claude Code), invoke a skill by name. Names below use t
 | `/flockion:cost-control` | Find token/cloud cost leaks without hurting product value. |
 | `/flockion:decomposition` | Break a monolith into services safely — smallest reversible seam, strangler fig / branch by abstraction, expand–migrate–contract. |
 | `/flockion:cloud-patterns` | Pick the smallest cloud design pattern for a named problem — 43-pattern WAF catalog, with the over-reach traps flagged. |
+| `/flockion:iso-27001` | Map a feature or system to ISO/IEC 27001:2022 Annex A controls — smallest controls that hold, plus the evidence an auditor would ask for. |
 
 Intensity is per skill: **`lite`** names the simpler alternative, **`full`** (default) applies the ladder strictly, **`ultra`** is the YAGNI extremist for when the codebase has wronged you personally. Disable with `stop flockion` or `normal mode`.
 

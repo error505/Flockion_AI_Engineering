@@ -52,6 +52,7 @@ Sharper modes for specific, high-risk jobs — beyond the core pack.
 | ----- | ---------- | ---- |
 | `decomposition` | breaking a monolith into services the lazy, safe way (strangler fig, branch by abstraction, parallel run, expand–migrate–contract); defaults to "extract a module, not a service" | [skills/decomposition/](../skills/decomposition/SKILL.md) |
 | `cloud-patterns` | choosing the smallest cloud design pattern for a named problem — full 43-pattern Well-Architected catalog mapped to the five pillars, plus the over-reach traps | [skills/cloud-patterns/](../skills/cloud-patterns/SKILL.md) |
+| `iso-27001` | mapping a feature or system to ISO/IEC 27001:2022 Annex A controls — smallest controls that hold, with the evidence an auditor would ask for; risk-based, not checklist bureaucracy | [skills/iso-27001/](../skills/iso-27001/SKILL.md) |
 
 ## Final Pack Rule
 

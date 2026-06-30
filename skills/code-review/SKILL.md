@@ -132,8 +132,8 @@ Check:
 Flag:
 
 * 300–500 lines: review carefully
-* 500+ lines: suggest refactor
-* 800+ lines: usually blocking unless justified
+* 500+ lines: blocking — files should never be written bigger than 500 lines; require a split
+* 1000+ lines: always blocking — must be split and refactored
 
 ## Rules
 

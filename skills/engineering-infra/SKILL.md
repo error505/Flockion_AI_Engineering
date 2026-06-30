@@ -112,8 +112,9 @@ Hardcode stable technical constants. Configure what really changes per environme
 Keep IaC files and workflows small and cohesive.
 
 * **100–300 lines**: good
-* **300–500 lines**: review carefully
-* **500+ lines**: split unless there is a clear reason
+* **300–500 lines**: review carefully, tighten before adding more
+* **500+ lines**: split — never write a file bigger than 500 lines while developing
+* **1000+ lines**: stop and refactor. If you find an existing file over 1000 lines, start splitting it before continuing.
 
 Split Terraform by concern (`network.tf`, `compute.tf`, `iam.tf`, `variables.tf`, `outputs.tf`). Split workflows by lifecycle. No god-module, no 800-line pipeline.
 

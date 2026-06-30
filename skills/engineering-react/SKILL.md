@@ -865,14 +865,14 @@ Do not simplify away accessibility basics.
 
 ## File Size Rule
 
-Keep files small and cohesive.
+Keep files small and cohesive. While developing, **never write a file bigger than 500 lines of code.**
 
 Targets:
 
 * **100–300 lines**: good
-* **300–500 lines**: review carefully
-* **500+ lines**: refactor unless there is a clear reason
-* **800–1000 lines**: usually a design warning
+* **300–500 lines**: review carefully, tighten before adding more
+* **500+ lines**: do not keep adding — split by responsibility first
+* **1000+ lines**: stop and refactor. If you find an existing file over 1000 lines, start splitting and refactoring it before continuing.
 
 Do not create god files.
 
